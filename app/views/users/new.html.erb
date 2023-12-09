@@ -1,20 +1,14 @@
 <h1>Sign Up</h1>
 
-<form action="<%= users_path %>" method="post">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>"
-  />
+<%= form_with model: @user do |form| %>
+  <%= form.label "Username:" %>
+  <%= form.text_field :username %>
 
-  <label for="username">Username:</label>
-  <input type="text" name="user[username]" id="user[username]" />
+  <%= form.label "Email:" %>
+  <%= form.email_field :email %>
 
-  <label for="email">Email:</label>
-  <input type="email" name="user[email]" id="user[email]" />
+  <%= form.label "Password:" %>
+  <%= form.password_field :password %>
 
-  <label for="password">Password:</label>
-  <input type="password" name="user[password]" id="user[password]" />
-
-  <button type="submit">Sign Up</button>
-</form>
+  <%= form.submit "Sign Up" %>
+<% end %>
